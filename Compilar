@@ -1,0 +1,8 @@
+Exemplo de como rodar no terminal linux:
+
+$ gcc -o cliente cliente.c netutil.c split.c ioutil.c
+$ gcc -o servidor servidor.c netutil.c split.c ioutil.c
+$ ./servidor 8080
+
+Em outro terminal:
+$ ./cliente 127.0.0.1 8080
