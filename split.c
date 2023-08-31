@@ -85,3 +85,34 @@ char * skip_delimiters(char * str, const char * delim) {
 
 }
 
+/**
+ * Retorna um ponteiro para a posição na string em que um
+ * caractere delimitador ou o final da string (nulo)
+ */
+char * skip_non_delimiters(char * str, const char * delim) {
+    char * str_ptr;
+    const char * delim_ptr;
+
+    if (str == 0) {
+             return 0;
+    }
+
+    delim_ptr = delim;
+
+    if (delim_ptr == 0 || strlen(delim_ptr) == 0) {
+        delim_ptr = default_delimiters();
+    }
+
+    str_ptr = str;
+
+    for (str_ptr = str; *str_ptr != 0 && strchr(delim_ptr, *str_ptr) == 0; str_ptr++);
+
+    return str_ptr;
+
+}
+
+/** Retorna os delimitadores padrão */
+const char * default_delimiters() {
+    return split_default_delimiters;
+}
+
